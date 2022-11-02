@@ -1,0 +1,18 @@
+0.0 Create RowList Class ( Prev - Next - Data )
+0.1 Create Manager List Class ( Previous - Next - Data - Average Finding Method)
+0.2 Write Function - takes string as parameter and finds number of numbers with StringStream library inside String
+0.3
+
+1. Read line
+1.2 Create row object node
+1.3 Arrange row elements in node
+
+1.4 Create admin node
+1.5 Connect the row elements node to the admin node
+
+1.6 If there is a new line, read another line again and connect it to the admin node
+1.7 Connect first admin node to second
+
+1.8 Continue until unread value remains in file
+
+2.0 Console Design
