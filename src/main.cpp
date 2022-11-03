@@ -4,6 +4,7 @@
 
 #include "ManagerList.hpp"
 #include "RowList.hpp"
+#include "projectFunctions.hpp"
 
 using namespace std;
 
