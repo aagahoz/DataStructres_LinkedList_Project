@@ -1,10 +1,10 @@
-/**       
+/**
  * @file  ManagerListNode.hpp
- * @description Programınızın açıklaması ne yaptığına dair. 
- * @course  Dersi aldığınız eğitim türü ve grup 
- * @assignment  Kaçıncı ödev olduğu  
- * @date  Kodu oluşturduğunuz Tarih 
- * @author  Gruptakilerin yazar adları ve mail adresleri  
+ * @description Programınızın açıklaması ne yaptığına dair.
+ * @course  Dersi aldığınız eğitim türü ve grup
+ * @assignment  Kaçıncı ödev olduğu
+ * @date  Kodu oluşturduğunuz Tarih
+ * @author  Gruptakilerin yazar adları ve mail adresleri
  */
 
 #ifndef ManagerListNode_hpp
@@ -28,20 +28,18 @@ public:
     void setRowList(RowListNode *rowList);
     RowListNode *getRowList();
 
-    void setManager(int data);
-    int getManager();
+    void setAverage(double average);
+    double getAverage();
 
     void setCount(int count);
     int getCount();
 
-    double getAverage();
-
-private:
+private: 
     ManagerListNode *next;
     ManagerListNode *prev;
     RowListNode *rowList;
-    int data;
     static int count;
+    double average;
 };
 
 #endif

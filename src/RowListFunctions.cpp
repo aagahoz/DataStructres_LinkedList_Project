@@ -3,77 +3,96 @@
 
 using namespace std;
 
-RowListNode *createRowListNode(int data)
+void addToRowListNode(RowListNode **FirstNode, int data)
 {
-    RowListNode *newNode = new RowListNode();
-    newNode->setData(data);
-    return newNode;
-}
-
-void addRowListNode(RowListNode **head, int data)
-{
-    RowListNode *newNode = createRowListNode(data);
-    *head = insertNode(*head, newNode);
-}
-
-void printRowList(RowListNode *head)
-{
-    RowListNode *temp = head;
-    // if row list is null
-    cout << "[Row List] : ";
-    while (temp != nullptr)
+    if (*FirstNode == NULL)
     {
-        cout << temp->getData() << " ";
-        temp = temp->getNext();
+        RowListNode *newNode = new RowListNode(data);
+        *FirstNode = newNode;
     }
-    cout << endl;
-}
-
-RowListNode *insertNode(RowListNode *head, RowListNode *newNode)
-{
-    RowListNode *temp = head;
-    if (temp == nullptr)
+    else if (*FirstNode != NULL)
     {
-        head = newNode;
-        return head;
-    }
-    else if (temp->getData() > newNode->getData())
-    {
-        newNode->setNext(temp);
-        temp->setPrev(newNode);
-        head = newNode;
-        return head;
-    }
-    else
-    {
-        while (temp->getNext() != nullptr && temp->getNext()->getData() < newNode->getData())
+        RowListNode *temp = *FirstNode;
+        while (temp->getNext() != NULL)
         {
             temp = temp->getNext();
         }
-        newNode->setNext(temp->getNext());
-        if (temp->getNext() != nullptr)
-        {
-            temp->getNext()->setPrev(newNode);
-        }
+
+        RowListNode *newNode = new RowListNode(data);
+
         temp->setNext(newNode);
-        newNode->setPrev(temp);
-        return head;
     }
 }
 
-void deleteRowList(RowListNode **head_ref)
+int getRowListNodesCount(RowListNode *FirstNode)
 {
-    RowListNode *current = *head_ref;
-    RowListNode *next = NULL;
-
-    int i = 0;
-    while (current != NULL)
+    int count = 0;
+    RowListNode *temp = FirstNode;
+    if (temp == NULL)
     {
-        next = current->getNext();
-        free(current);
-        current = next;
-        i++;
+        cout << "[NULL Nodes]" << endl;
     }
-    cout << i << " node deleted List" << endl;
-    *head_ref = NULL;
+    else if (temp != NULL)
+    {
+        while (temp != NULL)
+        {
+            count++;
+            cout << "data " << temp->getData() << endl;
+            temp = temp->getNext();
+        }
+    }
+    return count;
+}
+
+void printRowListDatas(RowListNode *FirstNode)
+{
+    RowListNode *temp = FirstNode;
+    cout << "[Row List Nodes Datas] :   ";
+    if (temp == NULL)
+    {
+        cout << "[NULL Nodes]" << endl;
+    }
+    else
+    {
+        while (temp != NULL)
+        {
+            cout << temp->getData() << " ";
+            temp = temp->getNext();
+        }
+        cout << endl;
+    }
+}
+
+void cleanRowListNodes(RowListNode **FirstNode)
+{
+    RowListNode *temp = *FirstNode;
+    if (temp == NULL)
+    {
+        cout << "NULL Nodes" << endl;
+    }
+    else if (temp->getNext() == NULL)
+    {
+        cout << "Only One Node : " << temp->getData() << endl;
+        delete temp;
+    }
+    else
+    {
+        RowListNode *next = temp->getNext();
+        while (temp != NULL)
+        {
+            cout << "Deleted : " << temp->getData() << endl;
+            delete temp;
+            temp = next;
+            if (next != NULL)
+            {
+                next = next->getNext();
+            }
+            else
+            {
+                cout << "[Node  Finished]" << endl;
+                break;
+            }
+        }
+    }
+    *FirstNode = NULL;
 }
