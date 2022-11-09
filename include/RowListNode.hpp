@@ -18,8 +18,13 @@ public:
 
     void setCount(int count);
     int getCount();
-    
+
+    void push_back(int data);
+    void printList();
+    void cleanList();
+
 private:
+    RowListNode *head;
     RowListNode *next;
     RowListNode *prev;
     int data;

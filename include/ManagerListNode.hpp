@@ -34,7 +34,13 @@ public:
     void setCount(int count);
     int getCount();
 
-private: 
+    void push_back(RowListNode *rowHead);
+    void printList();
+    void cleanList();
+    void push_by_RowList_Average(RowListNode *rowHead);
+
+private:
+    ManagerListNode *head;
     ManagerListNode *next;
     ManagerListNode *prev;
     RowListNode *rowList;
