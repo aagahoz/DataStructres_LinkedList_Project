@@ -82,6 +82,7 @@ void ManagerListNode::push_back(RowListNode *rowHead)
     {
         ManagerListNode *newNode = new ManagerListNode(rowHead);
         head = newNode;
+        head->average = rowHead->getAverage();
     }
     else if (head != NULL)
     {
@@ -95,7 +96,10 @@ void ManagerListNode::push_back(RowListNode *rowHead)
         ManagerListNode *newNode = new ManagerListNode(rowHead);
 
         temp->next = newNode;
+        newNode->prev = temp;
+        newNode->average = rowHead->getAverage();
     }
+    sortManageListByRowListAverage();
 }
 
 void ManagerListNode::printList()
@@ -111,6 +115,7 @@ void ManagerListNode::printList()
         while (temp != NULL)
         {
             temp->rowList->printList();
+            cout << "Average " << temp->average << endl;
             temp = temp->next;
         }
         cout << endl;
@@ -155,24 +160,46 @@ void ManagerListNode::cleanList()
     head = NULL;
 }
 
-void ManagerListNode::push_by_RowList_Average(RowListNode *rowHead)
+void ManagerListNode::sortManageListByRowListAverage()
 {
-    if (head == NULL)
+    ManagerListNode *temp = head;
+    ManagerListNode *next = temp->next;
+    while (temp != NULL)
     {
-        ManagerListNode *newNode = new ManagerListNode(rowHead);
-        head = newNode;
-    }
-    else if (head != NULL)
-    {
-
-        ManagerListNode *temp = head;
-        while (temp->next != NULL)
+        while (next != NULL)
         {
-            temp = temp->next;
+            if (temp->average > next->average)
+            {
+                double tempAverage = temp->average;
+                temp->average = next->average;
+                next->average = tempAverage;
+
+                RowListNode *tempRowList = temp->rowList;
+                temp->rowList = next->rowList;
+                next->rowList = tempRowList;
+            }
+            next = next->next;
         }
-
-        ManagerListNode *newNode = new ManagerListNode(rowHead);
-
-        temp->next = newNode;
+        temp = temp->next;
+        if (temp != NULL)
+        {
+            next = temp->next;
+        }
     }
+}
+
+ManagerListNode *ManagerListNode::getManageNodeByIndex(int index)
+{
+    ManagerListNode *temp = head;
+    int i = 0;
+    while (temp != NULL)
+    {
+        if (i == index)
+        {
+            return temp;
+        }
+        temp = temp->next;
+        i++;
+    }
+    return NULL;
 }

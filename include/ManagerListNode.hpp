@@ -37,7 +37,9 @@ public:
     void push_back(RowListNode *rowHead);
     void printList();
     void cleanList();
-    void push_by_RowList_Average(RowListNode *rowHead);
+    void sortManageListByRowListAverage();
+    ManagerListNode *getManageNodeByIndex(int index);
+    void printManageNodeByIndex(int index);
 
 private:
     ManagerListNode *head;
