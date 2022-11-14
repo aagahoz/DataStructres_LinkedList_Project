@@ -6,7 +6,7 @@ public:
     RowListNode();
     RowListNode(int data);
     ~RowListNode();
-    
+
     RowListNode *getHead();
     void setHead(RowListNode *head);
 
@@ -25,20 +25,24 @@ public:
     void setAverage(float average);
     double getAverage();
 
-
     void push_back(int data);
     void printList();
     void cleanList();
     void updateAverage();
-    int findNodeIndex(int data);
-    void deleteNode(int data);
     
+    int findNodeIndex(int data);
+    
+    void printDataNodeByIndex(int index);
+    
+    void deleteNodeByData(int data);
+    bool deleteNodeByIndex(int index);
+
 private:
     RowListNode *head;
     RowListNode *next;
     RowListNode *prev;
     int data;
-    static int count;
+    int count;
     float average;
 };
 

@@ -31,22 +31,27 @@ public:
     void setAverage(double average);
     double getAverage();
 
-    void setCount(int count);
-    int getCount();
+    void setRowListCount(int count);
+    int getRowListCount();
 
     void push_back(RowListNode *rowHead);
     void printList();
     void cleanList();
+    void updateAverage();
     void sortManageListByRowListAverage();
+    
     ManagerListNode *getManageNodeByIndex(int index);
-    void printManageNodeByIndex(int index);
+    void printDataNodeByManageIndexAndColumnIndex(int manageIndex, int rowIndex);
+
+    void deleteNodeByManageIndexAndColumnIndex(int manageIndex, int rowIndex);
+    void deleteNodeByManageIndex(int manageIndex);
 
 private:
     ManagerListNode *head;
     ManagerListNode *next;
     ManagerListNode *prev;
     RowListNode *rowList;
-    static int count;
+    int rowListCount;
     double average;
 };
 
