@@ -370,6 +370,15 @@ void ManagerListNode::printListDetailedInRange(int first, int last)
             i++;
         }
     }
+    else if (last > rowListCount)
+    {
+        int mod = last % rowListCount;
+
+        // cout << "last : " << last << " is out of range" << endl;
+        // cout << "rowListCount : " << rowListCount << endl;
+        // cout << "mod : " << mod << endl;
+        printListDetailedInRange(rowListCount - mod + 1, rowListCount - 1);
+    }
     else
     {
         cout << "[INFO Manage] Index Out of Range" << endl;

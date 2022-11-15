@@ -12,5 +12,6 @@
 using namespace std;
 
 int getDataFromFile(ManagerListNode **head);
+int getManageOctalNumber(int totalManageNumber);
 
 #endif

@@ -24,3 +24,16 @@ int getDataFromFile(ManagerListNode **head)
 
     return lineCount;
 }
+
+int getManageOctalNumber(int totalManageNumber)
+{
+    int maxOctalNumber = totalManageNumber / 8;
+    int remainderOctal = totalManageNumber % 8;
+
+    if (remainderOctal != 0)
+    {
+        maxOctalNumber++;
+    }
+
+    return maxOctalNumber;
+}
