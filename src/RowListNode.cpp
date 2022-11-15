@@ -43,7 +43,7 @@ void RowListNode::setNext(RowListNode *next)
 
 RowListNode *RowListNode::getNext()
 {
-    return head->next;
+    return next;
 }
 
 void RowListNode::setPrev(RowListNode *prev)
@@ -260,59 +260,48 @@ void RowListNode::deleteNodeByData(int data)
         {
             if (temp->data == data)
             {
-                if (temp->prev == NULL)
+                if (temp->prev == NULL) // this condition is for the first node
                 {
                     head = temp->next;
                     temp->next->prev = NULL;
                     count--;
-                    cout << "Deleted : " << temp->data << endl;
                     found = true;
                     delete temp;
                     break;
                 }
-                else if (temp->next == NULL)
+                else if (temp->next == NULL) // this condition is for the last node
                 {
                     temp->prev->next = NULL;
                     count--;
-                    cout << "Deleted : " << temp->data << endl;
                     found = true;
                     delete temp;
                     break;
                 }
-                else
+                else // this condition is for the middle nodes
                 {
                     temp->prev->next = temp->next;
                     temp->next->prev = temp->prev;
                     count--;
-                    cout << "Deleted : " << temp->data << endl;
                     found = true;
                     delete temp;
                     break;
                 }
             }
-            else
-            {
-                temp = temp->next;
-            }
         }
     }
-
     if (found == false)
     {
         cout << "[INFO] Node Not Found" << endl;
     }
 }
 
-bool RowListNode::deleteNodeByIndex(int index)
+bool RowListNode::deleteNodeByIndex(int index)  // ! bug : if try to delete last node, program crash
 {
     RowListNode *temp = head;
+    bool found = false;
     int i = 0;
-    // cout << "index: " << index << endl;
-    cout << "count: " << count << endl;
-
     if (index < count)
     {
-
         if (temp == NULL)
         {
             cout << "[INFO] NULL Nodes" << endl;
@@ -321,9 +310,8 @@ bool RowListNode::deleteNodeByIndex(int index)
         {
             cout << "Only One Node : " << temp->data << endl;
             count--;
+            found = true;
             delete temp;
-            updateAverage();
-            return true;
         }
         else
         {
@@ -331,33 +319,30 @@ bool RowListNode::deleteNodeByIndex(int index)
             {
                 if (i == index)
                 {
-                    if (temp->prev == NULL)
+                    if (temp->prev == NULL) // this condition is for the first node
                     {
                         head = temp->next;
                         temp->next->prev = NULL;
                         count--;
+                        found = true;
                         delete temp;
-                        updateAverage();
-                        return true;
                         break;
                     }
-                    else if (temp->next == NULL)
+                    else if (temp->next == NULL) // this condition is for the last node
                     {
                         temp->prev->next = NULL;
                         count--;
+                        found = true;
                         delete temp;
-                        updateAverage();
-                        return true;
                         break;
                     }
-                    else
+                    else // this condition is for the middle nodes
                     {
                         temp->prev->next = temp->next;
                         temp->next->prev = temp->prev;
                         count--;
+                        found = true;
                         delete temp;
-                        updateAverage();
-                        return true;
                         break;
                     }
                 }
@@ -371,7 +356,31 @@ bool RowListNode::deleteNodeByIndex(int index)
     }
     else
     {
-        cout << "[INFO] Index is out of rowlist range" << endl;
+        cout << "[INFO] Index Out of Range" << endl;
     }
-    return false;
+    return found;
+}
+
+
+void RowListNode::printReverseList()
+{
+    RowListNode *temp = head;
+    cout << "[INFO] Row List Reversed Nodes Datas :   ";
+    if (temp == NULL)
+    {
+        cout << "[INFO] NULL Nodes" << endl;
+    }
+    else
+    {
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        while (temp != NULL)
+        {
+            cout << temp->data << " ";
+            temp = temp->prev;
+        }
+        cout << endl;
+    }
 }

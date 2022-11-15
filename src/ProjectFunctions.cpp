@@ -1,14 +1,26 @@
 #include "projectFunctions.hpp"
 
-int getCountOfNumbersAtString(string str)
+int getDataFromFile(ManagerListNode **head)
 {
-    stringstream sstream(str);
-    string word;
-
-    int count = 0;
-    while (sstream >> word)
+    ifstream verilerFile("veriler.txt");
+    string line;
+    int lineCount = 0;
+    while (getline(verilerFile, line))
     {
-        count++;
+        stringstream s(line);
+        string numberChar;
+
+        RowListNode *tempRow = new RowListNode();
+        while (s >> numberChar)
+        {
+            int number = stoi(numberChar);
+            tempRow->push_back(number);
+        }
+        (*head)->push_back(tempRow);
+
+        lineCount++;
     }
-    return count;
+    verilerFile.close();
+
+    return lineCount;
 }

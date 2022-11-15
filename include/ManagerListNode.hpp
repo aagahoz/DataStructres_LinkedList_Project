@@ -39,12 +39,14 @@ public:
     void cleanList();
     void updateAverage();
     void sortManageListByRowListAverage();
-    
+
     ManagerListNode *getManageNodeByIndex(int index);
     void printDataNodeByManageIndexAndColumnIndex(int manageIndex, int rowIndex);
 
     void deleteNodeByManageIndexAndColumnIndex(int manageIndex, int rowIndex);
     void deleteNodeByManageIndex(int manageIndex);
+
+    void printListDetailedInRange(int first, int last);
 
 private:
     ManagerListNode *head;

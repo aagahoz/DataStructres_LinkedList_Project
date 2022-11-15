@@ -78,6 +78,7 @@ void ManagerListNode::push_back(RowListNode *rowHead)
     {
         ManagerListNode *newNode = new ManagerListNode(rowHead);
         head = newNode;
+        head->setNext(nullptr);
         head->average = rowHead->getAverage();
         rowListCount++;
     }
@@ -124,7 +125,7 @@ void ManagerListNode::cleanList()
 {
     ManagerListNode *temp = head;
     cout << endl;
-    cout << "[INFO Manage]Cleaning List...." << endl;
+    cout << "[INFO Manage] Cleaning List...." << endl;
     if (temp == NULL)
     {
         cout << "[INFO Manage] NULL Nodes" << endl;
@@ -171,7 +172,7 @@ void ManagerListNode::updateAverage()
 void ManagerListNode::sortManageListByRowListAverage()
 {
     ManagerListNode *temp = head;
-    cout << ">>>>>>  rowlistcount " << rowListCount << endl;
+    // cout << ">>>>>>  rowlistcount " << rowListCount << endl;
     if (rowListCount > 0)
     {
         ManagerListNode *next = temp->next;
@@ -197,7 +198,7 @@ void ManagerListNode::sortManageListByRowListAverage()
                 next = temp->next;
             }
         }
-        cout << "[INFO Manage] Sorted List" << endl;
+        // cout << "[INFO Manage] Sorted List" << endl;
     }
     else
     {
@@ -257,8 +258,8 @@ void ManagerListNode::deleteNodeByManageIndexAndColumnIndex(int manageIndex, int
         {
             if (i == manageIndex)
             {
-                isDeleted = temp->rowList->deleteNodeByIndex(rowIndex);
-                head->rowListCount--;
+                temp->rowList->deleteNodeByIndex(rowIndex);
+                isDeleted = true;
                 break;
             }
             temp = temp->next;
@@ -274,11 +275,11 @@ void ManagerListNode::deleteNodeByManageIndexAndColumnIndex(int manageIndex, int
     {
         updateAverage();
         sortManageListByRowListAverage();
-        cout << "[INFO Manage] Node Deleted" << endl;
+        cout << "[>>>>>>>>>>>>>************INFO Manage] Node Deleted" << endl;
     }
     else
     {
-        cout << "[INFO Manage] Node Not Deleted" << endl;
+        cout << "[>>>>>>>>>>>>>--------------INFO Manage] Node Not Deleted" << endl;
     }
     sortManageListByRowListAverage();
 }
@@ -350,5 +351,27 @@ void ManagerListNode::deleteNodeByManageIndex(int manageIndex)
     else
     {
         cout << "[INFO Manage] Node Not Deleted" << endl;
+    }
+}
+
+void ManagerListNode::printListDetailedInRange(int first, int last)
+{
+    ManagerListNode *temp = head;
+    int i = 0;
+    if (first < rowListCount && last < rowListCount)
+    {
+        while (temp != NULL)
+        {
+            if (i >= first && i <= last)
+            {
+                cout << "Node " << i << " : " << temp << " : " << temp->prev << " : " << temp->next << " : " << temp->average << endl;
+            }
+            temp = temp->next;
+            i++;
+        }
+    }
+    else
+    {
+        cout << "[INFO Manage] Index Out of Range" << endl;
     }
 }

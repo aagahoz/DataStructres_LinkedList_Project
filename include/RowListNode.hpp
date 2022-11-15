@@ -37,6 +37,8 @@ public:
     void deleteNodeByData(int data);
     bool deleteNodeByIndex(int index);
 
+    void printReverseList();
+
 private:
     RowListNode *head;
     RowListNode *next;

@@ -8,6 +8,7 @@
         "algorithm": "cpp",
         "array": "cpp",
         "string": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "fstream": "cpp"
     }
 }
