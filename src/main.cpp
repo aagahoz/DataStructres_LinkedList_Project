@@ -11,7 +11,6 @@ using namespace std;
 
 int main()
 {
-     // system("cls");
      // * user inputs created
      // ! delete function not working
 
@@ -103,16 +102,10 @@ int main()
           }
 
           cout << endl;
-          // cout << "Print Window" << endl;
           cout << "Manage Octal Number: " << manageOctalCounter << endl;
-          // cout << "Max Octal Number: " << maxOctalNumber << endl;
           cout << "Row Number: " << rowCounter << endl;
+          cout << endl;
           headManager->printListDetailedInRange(manageOctalCounter * 8, manageOctalCounter * 8 + 7, rowCounter);
-          // headManager->printDataNodeByManageIndexAndColumnIndex(manageOctalCounter, rowCounter);
      }
-
-     // headManager->printListDetailedInRange(0, lineCount - 1);
-
-     // system("pause");
      return 0;
 }

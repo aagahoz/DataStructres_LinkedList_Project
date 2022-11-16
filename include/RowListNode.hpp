@@ -26,7 +26,7 @@ public:
     double getAverage();
 
     void push_back(int data);
-    void printList();
+    void printList(int index);
     void cleanList();
     void updateAverage();
     

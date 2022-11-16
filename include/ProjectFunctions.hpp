@@ -13,12 +13,21 @@ using namespace std;
 
 int getDataFromFile(ManagerListNode **head);
 int getManageOctalNumber(int totalManageNumber);
+
 void printLine();
-void printWithBracketAverage(double average);
+
+void printWithBracketNumber(double number);
+void printWithBracketNumber(int number);
+
 void printWithAdressNoBracket(ManagerListNode *address);
 void printWithBracketAdress(ManagerListNode *address);
+
 void printSelectMarker(int index);
 
+void printWithAdressNoBracket(RowListNode *address);
+void printWithBracketAdress(RowListNode *address);
 
+void printWithBracketAdress(RowListNode *address, int space);
+void printWithBracketNumber(int number, int space);
 
 #endif

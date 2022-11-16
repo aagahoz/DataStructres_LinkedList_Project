@@ -115,10 +115,13 @@ void RowListNode::push_back(int data)
     }
 }
 
-void RowListNode::printList()
+#include "projectFunctions.hpp"
+#include <iomanip>
+
+void RowListNode::printList(int index)
 {
     RowListNode *temp = head;
-    cout << "[INFO] Row List Nodes Datas :   ";
+    // cout << "[INFO] Row List Nodes Datas :   ";
     if (temp == NULL)
     {
         cout << "[INFO] NULL Nodes" << endl;
@@ -127,7 +130,27 @@ void RowListNode::printList()
     {
         while (temp != NULL)
         {
-            cout << temp->data << " ";
+            cout << endl;
+            // cout << setw(28 + 17 * (index - 1));
+            printWithBracketAdress(temp, 36 + 17 * (index - 2));
+            cout << endl;
+            cout << setw(28 + 17 * (index - 1));
+            cout << " ----------" << setw(6);
+            cout << endl;
+            cout << setw(28 + 17 * (index - 1));
+            printWithBracketNumber(temp->data, 36 + 17 * (index - 2));
+            cout << endl;
+            cout << setw(28 + 17 * (index - 1));
+            cout << " ----------" << setw(6);
+            cout << endl;
+            printWithBracketAdress(temp->next, 36 + 17 * (index - 2));
+            cout << endl;
+            cout << setw(28 + 17 * (index - 1));
+            cout << " ----------" << setw(6);
+            cout << endl;
+
+            cout << endl;
+            // cout << temp->data << " ";
             temp = temp->next;
         }
         cout << endl;
@@ -295,7 +318,7 @@ void RowListNode::deleteNodeByData(int data)
     }
 }
 
-bool RowListNode::deleteNodeByIndex(int index)  // ! bug : if try to delete last node, program crash
+bool RowListNode::deleteNodeByIndex(int index) // ! bug : if try to delete last node, program crash
 {
     RowListNode *temp = head;
     bool found = false;
@@ -360,7 +383,6 @@ bool RowListNode::deleteNodeByIndex(int index)  // ! bug : if try to delete last
     }
     return found;
 }
-
 
 void RowListNode::printReverseList()
 {

@@ -125,7 +125,7 @@ void ManagerListNode::printList()
     {
         while (temp != NULL)
         {
-            temp->rowList->printList();
+            // ! temp->rowList->printList(); // there is bug but unused function
             cout << "Average " << temp->average << endl;
             temp = temp->next;
         }
@@ -410,7 +410,7 @@ void ManagerListNode::printListDetailedInRange(int first, int last, int rowIndex
         {
             if (i >= first && i <= last)
             {
-                printWithBracketAverage(temp->average);
+                printWithBracketNumber(temp->average);
             }
             temp = temp->next;
             i++;
@@ -438,6 +438,8 @@ void ManagerListNode::printListDetailedInRange(int first, int last, int rowIndex
         cout << endl;
         
         printSelectMarker(rowIndex % 8);
+
+        printSelectedRowList(rowIndex);
     }
     else if (last > rowListCount)
     {
@@ -460,7 +462,7 @@ void ManagerListNode::printSelectedRowList(int index)
         {
             if (i == index)
             {
-                temp->rowList->printList();
+                temp->rowList->printList(index % 8);
                 break;
             }
             temp = temp->next;
