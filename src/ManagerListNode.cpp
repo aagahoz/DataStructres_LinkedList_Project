@@ -1,5 +1,7 @@
 #include "ManagerListNode.hpp"
 #include <iostream>
+#include "ProjectFunctions.hpp"
+
 using namespace std;
 
 ManagerListNode::ManagerListNode()
@@ -285,11 +287,11 @@ void ManagerListNode::deleteNodeByManageIndexAndColumnIndex(int manageIndex, int
     {
         updateAverage();
         sortManageListByRowListAverage();
-        cout << "[>>>>>>>>>>>>>************INFO Manage] Node Deleted" << endl;
+        cout << "[INFO Manage] Node Deleted" << endl;
     }
     else
     {
-        cout << "[>>>>>>>>>>>>>--------------INFO Manage] Node Not Deleted" << endl;
+        cout << "[INFO Manage] Node Not Deleted" << endl;
     }
     sortManageListByRowListAverage();
 }
@@ -374,29 +376,72 @@ void ManagerListNode::printListDetailedInRange(int first, int last, int rowIndex
         {
             if (i >= first && i <= last)
             {
-                if (i == rowIndex)
-                {
-                    cout << "------>    ";
-                    cout << "Node " << i << " : " << temp << " : " << temp->prev << " : " << temp->next << " : " << temp->average << "      ";
-                    temp->rowList->printList();
-                }
-                else
-                {
-                    cout << "           ";
-                    cout << "Node " << i << " : " << temp << " : " << temp->prev << " : " << temp->next << " : " << temp->average << endl;
-                }
+                printWithAdressNoBracket(temp);
             }
             temp = temp->next;
             i++;
         }
+        cout << endl;
+        
+        printLine();
+        
+        //--------------------------------
+
+        temp = head;
+        i = 0;
+        while (temp != NULL)
+        {
+            if (i >= first && i <= last)
+            {
+                printWithBracketAdress(temp->next);
+            }
+            temp = temp->next;
+            i++;
+        }
+        cout << endl;
+
+        printLine();
+        
+        //--------------------------------
+
+        temp = head;
+        i = 0;
+        while (temp != NULL)
+        {
+            if (i >= first && i <= last)
+            {
+                printWithBracketAverage(temp->average);
+            }
+            temp = temp->next;
+            i++;
+        }
+        cout << endl;
+
+        printLine();
+        
+        //--------------------------------
+
+        temp = head;
+        i = 0;
+        while (temp != NULL)
+        {
+            if (i >= first && i <= last)
+            {
+                printWithBracketAdress(temp->prev);
+            }
+            temp = temp->next;
+            i++;
+        }
+        cout << endl;
+
+        printLine();
+        cout << endl;
+        
+        printSelectMarker(rowIndex % 8);
     }
     else if (last > rowListCount)
     {
         int mod = last % rowListCount;
-
-        // cout << "last : " << last << " is out of range" << endl;
-        // cout << "rowListCount : " << rowListCount << endl;
-        // cout << "mod : " << mod << endl;
         printListDetailedInRange(rowListCount - mod + 1, rowListCount - 1, rowIndex);
     }
     else

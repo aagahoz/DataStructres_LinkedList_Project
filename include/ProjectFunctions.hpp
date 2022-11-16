@@ -15,8 +15,9 @@ int getDataFromFile(ManagerListNode **head);
 int getManageOctalNumber(int totalManageNumber);
 void printLine();
 void printWithBracketAverage(double average);
-void printWithAdressNoBracket(int *address);
-void printWithBracketAdress(int *address);
+void printWithAdressNoBracket(ManagerListNode *address);
+void printWithBracketAdress(ManagerListNode *address);
+void printSelectMarker(int index);
 
 
 

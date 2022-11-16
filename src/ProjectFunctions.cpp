@@ -54,12 +54,17 @@ void printWithBracketAverage(double average)
     cout << setw(2) << "|" << setw(8) << average << "|" << setw(6) << "";
 }
 
-void printWithBracketAdress(int *address)
+void printWithBracketAdress(ManagerListNode *address)
 {
-    cout << setw(2) << "|" << setw(8) << address << "|" << setw(6) << "";
+    cout << setw(2) << "|" << setw(8) << address <<  "|" << setw(6) << "";
 }
 
-void printWithAdressNoBracket(int *address)
+void printWithAdressNoBracket(ManagerListNode *address)
 {
-    cout << "  " << address << setw(9);
+    cout << setw(2) << "" << address << setw(7) << "";
+}
+
+void printSelectMarker(int index)
+{
+    cout << setw(28 + 17 * (index - 1)) << "^^^^^^^^^^" << endl;
 }

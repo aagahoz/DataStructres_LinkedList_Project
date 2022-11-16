@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-     system("cls");
+     // system("cls");
      // * user inputs created
      // ! delete function not working
 
@@ -23,51 +23,7 @@ int main()
      bool k_OnePressed = false;
      bool k_TwoPressed = false;
 
-     int i = 0;
-     int test1[8] = {1, 2, 3, 4, 5, 6, 7, 8};
-     int test2[8] = {1, 2, 3, 4, 5, 6, 7, 8};
-     double test3Averages[8] = {32.5, 63.3, 45.6, 78.9, 90.1, 100.0, 45.6, 78.9};
-
-     for (i = 0; i < 8; i++)
-     {
-          printWithAdressNoBracket(&test1[i]);
-     }
-     cout << endl;
-     printLine();
-
-     for (i = 0; i < 8; i++)
-     {
-          cout << " |" << &test2[i] << "|" << setw(8);
-     }
-     cout << endl;
-     printLine();
-
-     for (i = 0; i < 8; i++)
-     {
-          printWithBracketAverage(test3Averages[i]);
-     }
-     cout << endl;
-     printLine();
-
-     for (i = 0; i < 8; i++)
-     {
-          printWithBracketAdress(&test2[i]);
-     }
-     cout << endl;
-     printLine();
-
-
-     // ! int index = 2;
-     // ! cout << setw(1) <<  "" << setw(index*19) << "^^^^^^^^^^" << endl;
-
-
-
-
-
-
-
-
-     while (false)
+     while (true)
      {
           char choice;
           cout << "input > ";
