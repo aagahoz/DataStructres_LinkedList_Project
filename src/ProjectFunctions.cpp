@@ -1,3 +1,4 @@
+#include <iomanip>
 #include "projectFunctions.hpp"
 
 int getDataFromFile(ManagerListNode **head)
@@ -36,4 +37,29 @@ int getManageOctalNumber(int totalManageNumber)
     }
 
     return maxOctalNumber;
+}
+
+void printLine()
+{
+    for (int i = 0; i < 8; i++)
+    {
+        cout << " ----------" << setw(6);
+        cout << "  ";
+    }
+    cout << endl;
+}
+
+void printWithBracketAverage(double average)
+{
+    cout << setw(2) << "|" << setw(8) << average << "|" << setw(6) << "";
+}
+
+void printWithBracketAdress(int *address)
+{
+    cout << setw(2) << "|" << setw(8) << address << "|" << setw(6) << "";
+}
+
+void printWithAdressNoBracket(int *address)
+{
+    cout << "  " << address << setw(9);
 }

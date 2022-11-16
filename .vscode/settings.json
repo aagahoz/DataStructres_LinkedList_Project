@@ -9,6 +9,7 @@
         "array": "cpp",
         "string": "cpp",
         "new": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "iomanip": "cpp"
     }
 }

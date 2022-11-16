@@ -72,6 +72,16 @@ double ManagerListNode::getAverage()
     return average;
 }
 
+void ManagerListNode::setHead(ManagerListNode *head)
+{
+    this->head = head;
+}
+
+ManagerListNode *ManagerListNode::getHead()
+{
+    return head;
+}
+
 void ManagerListNode::push_back(RowListNode *rowHead)
 {
     if (head == NULL)

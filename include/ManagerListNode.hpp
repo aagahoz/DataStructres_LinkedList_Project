@@ -34,6 +34,9 @@ public:
     void setRowListCount(int count);
     int getRowListCount();
 
+    void setHead(ManagerListNode *head);
+    ManagerListNode *getHead();
+
     void push_back(RowListNode *rowHead);
     void printList();
     void cleanList();
