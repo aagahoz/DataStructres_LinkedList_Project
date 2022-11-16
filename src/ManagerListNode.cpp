@@ -354,7 +354,7 @@ void ManagerListNode::deleteNodeByManageIndex(int manageIndex)
     }
 }
 
-void ManagerListNode::printListDetailedInRange(int first, int last)
+void ManagerListNode::printListDetailedInRange(int first, int last, int rowIndex)
 {
     ManagerListNode *temp = head;
     int i = 0;
@@ -364,7 +364,16 @@ void ManagerListNode::printListDetailedInRange(int first, int last)
         {
             if (i >= first && i <= last)
             {
-                cout << "Node " << i << " : " << temp << " : " << temp->prev << " : " << temp->next << " : " << temp->average << endl;
+                if (i == rowIndex)
+                {
+                    cout << "------>    ";
+                }
+                else
+                {
+                    cout << "           ";
+                }
+                cout << "Node " << i << " : " << temp << " : " << temp->prev << " : " << temp->next << " : " << temp->average << "      ";
+                temp->rowList->printList();
             }
             temp = temp->next;
             i++;
@@ -377,7 +386,30 @@ void ManagerListNode::printListDetailedInRange(int first, int last)
         // cout << "last : " << last << " is out of range" << endl;
         // cout << "rowListCount : " << rowListCount << endl;
         // cout << "mod : " << mod << endl;
-        printListDetailedInRange(rowListCount - mod + 1, rowListCount - 1);
+        printListDetailedInRange(rowListCount - mod + 1, rowListCount - 1, rowIndex);
+    }
+    else
+    {
+        cout << "[INFO Manage] Index Out of Range" << endl;
+    }
+}
+
+void ManagerListNode::printSelectedRowList(int index)
+{
+    ManagerListNode *temp = head;
+    int i = 0;
+    if (index < rowListCount)
+    {
+        while (temp != NULL)
+        {
+            if (i == index)
+            {
+                temp->rowList->printList();
+                break;
+            }
+            temp = temp->next;
+            i++;
+        }
     }
     else
     {

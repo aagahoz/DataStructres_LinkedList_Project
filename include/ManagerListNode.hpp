@@ -46,7 +46,9 @@ public:
     void deleteNodeByManageIndexAndColumnIndex(int manageIndex, int rowIndex);
     void deleteNodeByManageIndex(int manageIndex);
 
-    void printListDetailedInRange(int first, int last);
+    void printListDetailedInRange(int first, int last, int rowIndex);
+
+    void printSelectedRowList(int index);
 
 private:
     ManagerListNode *head;
