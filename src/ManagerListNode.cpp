@@ -367,13 +367,14 @@ void ManagerListNode::printListDetailedInRange(int first, int last, int rowIndex
                 if (i == rowIndex)
                 {
                     cout << "------>    ";
+                    cout << "Node " << i << " : " << temp << " : " << temp->prev << " : " << temp->next << " : " << temp->average << "      ";
+                    temp->rowList->printList();
                 }
                 else
                 {
                     cout << "           ";
+                    cout << "Node " << i << " : " << temp << " : " << temp->prev << " : " << temp->next << " : " << temp->average << endl;
                 }
-                cout << "Node " << i << " : " << temp << " : " << temp->prev << " : " << temp->next << " : " << temp->average << "      ";
-                temp->rowList->printList();
             }
             temp = temp->next;
             i++;

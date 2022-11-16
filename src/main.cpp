@@ -95,10 +95,13 @@ int main()
           case 'p':
                cout << "Manage List Node Deleted" << endl;
                break;
+          default:
+               cout << "Invalid Input" << endl;
+               break;
           }
 
           cout << endl;
-          cout << "Print Window" << endl;
+          // cout << "Print Window" << endl;
           cout << "Manage Octal Number: " << manageOctalCounter << endl;
           // cout << "Max Octal Number: " << maxOctalNumber << endl;
           cout << "Row Number: " << rowCounter << endl;
