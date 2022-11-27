@@ -25,7 +25,7 @@ ManagerListNode::ManagerListNode(RowListNode *rowList)
 }
 ManagerListNode::~ManagerListNode()
 {
-    cout << "[INFO Manage] ManagerListNode destructor called" << endl;
+    // cout << "[INFO Manage] ManagerListNode destructor called" << endl;
 }
 
 void ManagerListNode::setNext(ManagerListNode *next)
@@ -116,17 +116,17 @@ void ManagerListNode::push_back(RowListNode *rowHead)
 void ManagerListNode::printList()
 {
     ManagerListNode *temp = head;
-    cout << "[INFO Manage] Manager List Nodes Datas" << endl;
+    // cout << "[INFO Manage] Manager List Nodes Datas" << endl;
     if (temp == NULL)
     {
-        cout << "[INFO Manage] NULL Nodes" << endl;
+        // cout << "[INFO Manage] NULL Nodes" << endl;
     }
     else
     {
         while (temp != NULL)
         {
             // ! temp->rowList->printList(); // there is bug but unused function
-            cout << "Average " << temp->average << endl;
+            // cout << "Average " << temp->average << endl;
             temp = temp->next;
         }
         cout << endl;
@@ -137,14 +137,14 @@ void ManagerListNode::cleanList()
 {
     ManagerListNode *temp = head;
     cout << endl;
-    cout << "[INFO Manage] Cleaning List...." << endl;
+    // cout << "[INFO Manage] Cleaning List...." << endl;
     if (temp == NULL)
     {
-        cout << "[INFO Manage] NULL Nodes" << endl;
+        // cout << "[INFO Manage] NULL Nodes" << endl;
     }
     else if (temp->next == NULL)
     {
-        cout << "[INFO Manage] Only One Node : " << temp->rowList << endl;
+        // cout << "[INFO Manage] Only One Node : " << temp->rowList << endl;
         delete temp->rowList;
         delete temp;
     }
@@ -153,7 +153,7 @@ void ManagerListNode::cleanList()
         ManagerListNode *next = temp->next;
         while (temp != NULL)
         {
-            cout << "Deleted : " << temp->rowList << endl;
+            // cout << "Deleted : " << temp->rowList << endl;
             delete temp->rowList;
             delete temp;
             temp = next;
@@ -163,7 +163,7 @@ void ManagerListNode::cleanList()
             }
             else
             {
-                cout << "[INFO Manage] Node  Clean" << endl;
+                // cout << "[INFO Manage] Node  Clean" << endl;
                 break;
             }
         }
@@ -214,7 +214,7 @@ void ManagerListNode::sortManageListByRowListAverage()
     }
     else
     {
-        cout << "[INFO Manage] No Node to Sort due to empty manage list" << endl;
+        // cout << "[INFO Manage] No Node to Sort due to empty manage list" << endl;
     }
 }
 
@@ -255,7 +255,7 @@ void ManagerListNode::printDataNodeByManageIndexAndColumnIndex(int manageIndex, 
     }
     else
     {
-        cout << "[INFO Manage] Index Out of Range" << endl;
+        // cout << "[INFO Manage] Index Out of Range" << endl;
     }
 }
 
@@ -280,18 +280,18 @@ void ManagerListNode::deleteNodeByManageIndexAndColumnIndex(int manageIndex, int
     }
     else
     {
-        cout << "[INFO Manage] Index Out of Range" << endl;
+        // cout << "[INFO Manage] Index Out of Range" << endl;
     }
 
     if (isDeleted)
     {
         updateAverage();
         sortManageListByRowListAverage();
-        cout << "[INFO Manage] Node Deleted" << endl;
+        // cout << "[INFO Manage] Node Deleted" << endl;
     }
     else
     {
-        cout << "[INFO Manage] Node Not Deleted" << endl;
+        // cout << "[INFO Manage] Node Not Deleted" << endl;
     }
     sortManageListByRowListAverage();
 }
@@ -309,7 +309,7 @@ void ManagerListNode::deleteNodeByManageIndex(int manageIndex)
             {
                 if (temp->prev == NULL && temp->next == NULL)
                 {
-                    cout << "[INFO Manage] Only One Node : " << temp->rowList << endl;
+                    // cout << "[INFO Manage] Only One Node : " << temp->rowList << endl;
                     isDeleted = true;
                     rowListCount--;
                     delete temp->rowList;
@@ -322,7 +322,7 @@ void ManagerListNode::deleteNodeByManageIndex(int manageIndex)
                     head->prev = NULL;
                     isDeleted = true;
                     rowListCount--;
-                    cout << "[INFO Manage] Deleted : " << temp->rowList << endl;
+                    // cout << "[INFO Manage] Deleted : " << temp->rowList << endl;
                     delete temp->rowList;
                     delete temp;
                 }
@@ -331,7 +331,7 @@ void ManagerListNode::deleteNodeByManageIndex(int manageIndex)
                     temp->prev->next = NULL;
                     isDeleted = true;
                     rowListCount--;
-                    cout << "[INFO Manage] Deleted : " << temp->rowList << endl;
+                    // cout << "[INFO Manage] Deleted : " << temp->rowList << endl;
                     delete temp->rowList;
                     delete temp;
                 }
@@ -341,7 +341,7 @@ void ManagerListNode::deleteNodeByManageIndex(int manageIndex)
                     temp->next->prev = temp->prev;
                     isDeleted = true;
                     rowListCount--;
-                    cout << "[INFO Manage] Deleted : " << temp->rowList << endl;
+                    // cout << "[INFO Manage] Deleted : " << temp->rowList << endl;
                     delete temp->rowList;
                     delete temp;
                 }
@@ -353,16 +353,16 @@ void ManagerListNode::deleteNodeByManageIndex(int manageIndex)
     }
     else
     {
-        cout << "[INFO] Index Out of Range" << endl;
+        // cout << "[INFO] Index Out of Range" << endl;
     }
     if (isDeleted)
     {
         sortManageListByRowListAverage();
-        cout << "[INFO Manage] Node Deleted" << endl;
+        // cout << "[INFO Manage] Node Deleted" << endl;
     }
     else
     {
-        cout << "[INFO Manage] Node Not Deleted" << endl;
+        // cout << "[INFO Manage] Node Not Deleted" << endl;
     }
 }
 
@@ -371,16 +371,16 @@ void ManagerListNode::printListDetailedInRange(int first, int last, int rowIndex
     ManagerListNode *temp = head;
     int i = 0;
     int countList = 0;
-    cout << "first : " << first << endl;
-    cout << "last : " << last << endl;
-    cout << "rowIndex : " << rowIndex << endl
-         << endl;
+    // cout << "first : " << first << endl;
+    // cout << "last : " << last << endl;
+    // cout << "rowIndex : " << rowIndex << endl
+    //      << endl;
 
     bool isLastPage = false;
     int count = 7;
     if (last - first < 7)
     {
-        cout << "last - first < 7" << endl;
+        // cout << "last - first < 7" << endl;
         isLastPage = true;
         count = last - first;
     }
@@ -459,16 +459,16 @@ void ManagerListNode::printListDetailedInRange(int first, int last, int rowIndex
     else if (last > rowListCount)
     {
         int mod = last % rowListCount;
-        cout << "rowListCount: " << rowListCount << endl;
-        cout << "last: " << last << endl;
-        cout << "rowlistcount - mod + 1 " << rowListCount - mod + 1 << endl;
-        cout << "rowlistcount - 1 " << rowListCount - 1 << endl;
+        // cout << "rowListCount: " << rowListCount << endl;
+        // cout << "last: " << last << endl;
+        // cout << "rowlistcount - mod + 1 " << rowListCount - mod + 1 << endl;
+        // cout << "rowlistcount - 1 " << rowListCount - 1 << endl;
         // system("Pause");
         printListDetailedInRange(rowListCount - mod + 1, rowListCount - 1, rowIndex);
     }
     else
     {
-        cout << "[INFO Manage] Index Out of Range" << endl;
+        // cout << "[INFO Manage] Index Out of Range" << endl;
     }
 }
 
@@ -491,6 +491,29 @@ void ManagerListNode::printSelectedRowList(int index)
     }
     else
     {
-        cout << "[INFO Manage] Index Out of Range" << endl;
+        // cout << "[INFO Manage] Index Out of Range" << endl;
     }
+}
+
+RowListNode *ManagerListNode::getNodebyIndex(int index)
+{
+    ManagerListNode *temp = head;
+    int i = 0;
+    if (index < rowListCount)
+    {
+        while (temp != NULL)
+        {
+            if (i == index)
+            {
+                return temp->rowList;
+            }
+            temp = temp->next;
+            i++;
+        }
+    }
+    else
+    {
+        // cout << "[INFO Manage] Index Out of Range" << endl;
+    }
+    return NULL;
 }

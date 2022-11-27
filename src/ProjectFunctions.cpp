@@ -20,7 +20,7 @@ int getDataFromFile(ManagerListNode **head)
         (*head)->push_back(tempRow);
 
         lineCount++;
-        cout << "lineCount: " << lineCount << endl;
+        // cout << "lineCount: " << lineCount << endl;
     }
     verilerFile.close();
 

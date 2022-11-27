@@ -23,7 +23,7 @@ RowListNode::RowListNode(int data)
 
 RowListNode::~RowListNode()
 {
-    cout << "[INFO] RowListNode destructor called" << endl;
+    // cout << "[INFO] RowListNode destructor called" << endl;
 }
 
 void RowListNode::setHead(RowListNode *head)
@@ -124,7 +124,7 @@ void RowListNode::printList(int index)
     // cout << "[INFO] Row List Nodes Datas :   ";
     if (temp == NULL)
     {
-        cout << "[INFO] NULL Nodes" << endl;
+        // cout << "[INFO] NULL Nodes" << endl;
     }
     else
     {
@@ -161,16 +161,16 @@ void RowListNode::cleanList()
 {
     RowListNode *temp = head;
     cout << endl;
-    cout << "[INFO] Cleaning List...." << endl;
+    // cout << "[INFO] Cleaning List...." << endl;
     if (count > 0)
     {
         if (temp == NULL)
         {
-            cout << "[INFO] NULL Nodes" << endl;
+            // cout << "[INFO] NULL Nodes" << endl;
         }
         else if (temp->next == NULL)
         {
-            cout << "[INFO] Only One Node : " << temp->data << endl;
+            // cout << "[INFO] Only One Node : " << temp->data << endl;
             count--;
             delete temp;
         }
@@ -179,7 +179,7 @@ void RowListNode::cleanList()
             RowListNode *next = temp->next;
             while (temp != NULL)
             {
-                cout << "[INFO] Deleted : " << temp->data << endl;
+                // cout << "[INFO] Deleted : " << temp->data << endl;
                 count--;
                 delete temp;
                 temp = next;
@@ -189,7 +189,7 @@ void RowListNode::cleanList()
                 }
                 else
                 {
-                    cout << "[INFO] Node  Clean" << endl;
+                    // cout << "[INFO] Node  Clean" << endl;
                     break;
                 }
             }
@@ -198,7 +198,7 @@ void RowListNode::cleanList()
     }
     else
     {
-        cout << "[INFO] No Nodes to Clean" << endl;
+        // cout << "[INFO] No Nodes to Clean" << endl;
     }
 }
 
@@ -209,7 +209,7 @@ void RowListNode::updateAverage()
     int i = 0;
     if (temp == NULL)
     {
-        cout << "[INFO] NULL Nodes" << endl;
+        // cout << "[INFO] NULL Nodes" << endl;
     }
     else
     {
@@ -231,7 +231,7 @@ int RowListNode::findNodeIndex(int data)
     {
         if (temp->data == data)
         {
-            cout << "Node Index : " << index << endl;
+            // cout << "Node Index : " << index << endl;
             break;
         }
         else
@@ -251,7 +251,7 @@ void RowListNode::printDataNodeByIndex(int index)
     {
         if (i == index)
         {
-            cout << "Node Data : " << temp->data << endl;
+            // cout << "Node Data : " << temp->data << endl;
             break;
         }
         else
@@ -268,11 +268,11 @@ void RowListNode::deleteNodeByData(int data)
     bool found = false;
     if (temp == NULL)
     {
-        cout << "[INFO] NULL Nodes" << endl;
+        // cout << "[INFO] NULL Nodes" << endl;
     }
     else if (temp->next == NULL)
     {
-        cout << "Only One Node : " << temp->data << endl;
+        // cout << "Only One Node : " << temp->data << endl;
         count--;
         found = true;
         delete temp;
@@ -314,7 +314,7 @@ void RowListNode::deleteNodeByData(int data)
     }
     if (found == false)
     {
-        cout << "[INFO] Node Not Found" << endl;
+        // cout << "[INFO] Node Not Found" << endl;
     }
 }
 
@@ -323,74 +323,84 @@ bool RowListNode::deleteNodeByIndex(int index) // ! bug : if try to delete last 
     RowListNode *temp = head;
     bool found = false;
     int i = 0;
-    if (index < count)
+    // cout << "[INFO] Deleting Node By Index : " << index << endl;
+    if (count <= 0)
     {
-        if (temp == NULL)
-        {
-            cout << "[INFO] NULL Nodes" << endl;
-        }
-        else if (temp->next == NULL)
-        {
-            cout << "Only One Node : " << temp->data << endl;
-            count--;
-            found = true;
-            delete temp;
-        }
-        else
-        {
-            while (temp != NULL)
-            {
-                if (i == index)
-                {
-                    if (temp->prev == NULL) // this condition is for the first node
-                    {
-                        head = temp->next;
-                        temp->next->prev = NULL;
-                        count--;
-                        found = true;
-                        delete temp;
-                        break;
-                    }
-                    else if (temp->next == NULL) // this condition is for the last node
-                    {
-                        temp->prev->next = NULL;
-                        count--;
-                        found = true;
-                        delete temp;
-                        break;
-                    }
-                    else // this condition is for the middle nodes
-                    {
-                        temp->prev->next = temp->next;
-                        temp->next->prev = temp->prev;
-                        count--;
-                        found = true;
-                        delete temp;
-                        break;
-                    }
-                }
-                else
-                {
-                    temp = temp->next;
-                    i++;
-                }
-            }
-        }
+        // cout << "[INFO] Count : " << count << endl;
     }
     else
     {
-        cout << "[INFO] Index Out of Range" << endl;
+        if (index < count)
+        {
+            if (temp == NULL)
+            {
+                // cout << "[INFO] NULL Nodes" << endl;
+            }
+            else if (temp->next == NULL)
+            {
+                // cout << "Only One Node : " << temp->data << endl;
+                count--;
+                found = true;
+                delete temp;
+            }
+            else
+            {
+                while (temp != NULL)
+                {
+                    if (i == index)
+                    {
+                        if (temp->prev == NULL) // this condition is for the first node
+                        {
+                            head = temp->next;
+                            temp->next->prev = NULL;
+                            count--;
+                            found = true;
+                            delete temp;
+                            break;
+                        }
+                        else if (temp->next == NULL) // this condition is for the last node
+                        {
+                            temp->prev->next = NULL;
+                            count--;
+                            found = true;
+                            delete temp;
+                            break;
+                        }
+                        else // this condition is for the middle nodes
+                        {
+                            temp->prev->next = temp->next;
+                            temp->next->prev = temp->prev;
+                            count--;
+                            found = true;
+                            delete temp;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        temp = temp->next;
+                        i++;
+                    }
+                }
+            }
+        }
+
+        else
+        {
+            // cout << "[INFO] Index Out of Range" << endl;
+        }
     }
+    updateAverage();
     return found;
 }
 
 void RowListNode::printReverseList()
 {
     RowListNode *temp = head;
-    cout << "[INFO] Row List Reversed Nodes Datas :   ";
+    // cout << "[INFO] Row List Reversed Nodes Datas :   ";
     if (temp == NULL)
     {
-        cout << "[INFO] NULL Nodes" << endl;
+        // cout << "[INFO] NULL Nodes" << endl;
     }
     else
     {

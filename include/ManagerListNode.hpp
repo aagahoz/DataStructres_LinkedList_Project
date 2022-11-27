@@ -53,6 +53,8 @@ public:
 
     void printSelectedRowList(int index);
 
+    RowListNode *getNodebyIndex(int index);
+
 private:
     ManagerListNode *head;
     ManagerListNode *next;

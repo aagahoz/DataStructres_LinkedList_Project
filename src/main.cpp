@@ -2,6 +2,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <iomanip>
+#include <time.h>
 
 #include "ManagerListNode.hpp"
 #include "RowListNode.hpp"
@@ -16,16 +17,18 @@ int main()
 
      ManagerListNode *headManager = new ManagerListNode();
      int maxOctalNumber = getManageOctalNumber(getDataFromFile(&headManager)) - 1;
+     RowListNode *selectedManageNode;
 
      int manageOctalCounter = 0;
      int rowCounter = 0;
      bool k_OnePressed = false;
      bool k_TwoPressed = false;
+     srand(time(0));
 
      while (true)
      {
           char choice;
-          cout << "input > ";
+          cout << " > ";
           cin >> choice;
           system("cls");
 
@@ -45,7 +48,7 @@ int main()
                }
                break;
           case 'z':
-               cout << "Previous Row List Selected" << endl;
+               // cout << "Previous Row List Selected" << endl;
                rowCounter -= 1;
                if (rowCounter < manageOctalCounter * 8)
                {
@@ -54,7 +57,7 @@ int main()
                break;
 
           case 'a':
-               cout << "Selected 8 next Manage List" << endl;
+               // cout << "Selected 8 next Manage List" << endl;
                manageOctalCounter++;
                if (manageOctalCounter > maxOctalNumber)
                {
@@ -63,7 +66,7 @@ int main()
                rowCounter = manageOctalCounter * 8;
                break;
           case 'd':
-               cout << "Selected 8 previous Manage List" << endl;
+               // cout << "Selected 8 previous Manage List" << endl;
                manageOctalCounter--;
                if (manageOctalCounter < 0)
                {
@@ -75,39 +78,87 @@ int main()
           case 'k':
                if (k_OnePressed == false)
                {
-                    cout << "k_OnePressed, selected random node" << endl;
+                    // cout << "k_OnePressed, selected random node" << endl;
+                    // cout << "manage index: " << rowCounter << endl;
+                    
+                    selectedManageNode = headManager->getNodebyIndex(rowCounter);
+                    // int randomRowIndex = rand() % selectedManageNode->getCount();
+                    // cout << "randomRow: " << randomRowIndex << endl;
+                    
                     k_OnePressed = true;
+               }
+               else if (k_OnePressed == true)
+               {
+                    // cout << "k_TwoPressed" << endl;
+                    k_TwoPressed = true;
                }
                else
                {
-                    cout << "k_TwoPressed" << endl;
-                    k_TwoPressed = true;
+                    k_OnePressed = false;
+                    k_TwoPressed = false;
                }
 
                if (k_OnePressed == true && k_TwoPressed == true)
                {
-                    cout << "k_OnePressed and k_TwoPressed" << endl;
-                    cout << "one data deleted randomly from Selected Row List " << endl;
-
+                    // cout << "k_OnePressed and k_TwoPressed" << endl;
+                    // cout << "one data deleted randomly from Selected Row List " << endl;
+                    if (selectedManageNode->getCount() > 0)
+                    {
+                         int randomRowIndex = rand() % selectedManageNode->getCount();
+                         selectedManageNode->deleteNodeByIndex(randomRowIndex);
+                         headManager->updateAverage();
+                    }
+                    else
+                    {
+                         // cout << "Selected Row List is empty" << endl;
+                         headManager->deleteNodeByManageIndex(rowCounter);
+                    }
+                    // selectedManageNode->deleteNodeByIndex(rand() % selectedManageNode->getCount());
+                    // cout << "Selected Row List Count: " << selectedManageNode->getCount() << endl;
                     k_OnePressed = false;
                     k_TwoPressed = false;
                }
                break;
 
           case 'p':
-               cout << "Manage List Node Deleted" << endl;
+               // cout << "Manage List Node Deleted" << endl;
                headManager->deleteNodeByManageIndex(rowCounter);
-               cout << "Row Counter : " << rowCounter << endl;
+               // cout << "Row Counter : " << rowCounter << endl;
                // cout << "Manage Octal Counter " << manageOctalCounter << endl;
                break;
           default:
-               cout << "Invalid Input" << endl;
+               // cout << "Invalid Input" << endl;
                break;
           }
 
+          if (manageOctalCounter == 0 && maxOctalNumber == 0)
+          {
+               cout << "first";
+               cout << "                                                                                                                                         ";
+               cout << "last";                            
+          }
+          else if (manageOctalCounter == 0)
+          {
+               cout << "first";
+               cout << "                                                                                                                                         ";
+               cout << "-->";
+          }
+          else if (manageOctalCounter == maxOctalNumber)
+          {
+               cout << "<--";
+               cout << "                                                                                                                                         ";
+               cout << "last";
+          }
+          else
+          {
+               cout << "<--";
+               cout << "                                                                                                                                         ";
+               cout << "-->";
+          }
+
           cout << endl;
-          cout << "Manage Octal Number: " << manageOctalCounter << endl;
-          cout << "rowCounter:  " << rowCounter << endl;
+          // cout << "Manage Octal Number: " << manageOctalCounter << endl;
+          // cout << "rowCounter:  " << rowCounter << endl;
           cout << endl;
           headManager->printListDetailedInRange(manageOctalCounter * 8, manageOctalCounter * 8 + 7, rowCounter);
      }
