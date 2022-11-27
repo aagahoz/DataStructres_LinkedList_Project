@@ -14,7 +14,7 @@ using namespace std;
 int getDataFromFile(ManagerListNode **head);
 int getManageOctalNumber(int totalManageNumber);
 
-void printLine();
+void printLine(int count);
 
 void printWithBracketNumber(double number);
 void printWithBracketNumber(int number);

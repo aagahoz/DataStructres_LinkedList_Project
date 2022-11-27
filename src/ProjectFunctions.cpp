@@ -40,11 +40,11 @@ int getManageOctalNumber(int totalManageNumber)
     return maxOctalNumber;
 }
 
-void printLine()
+void printLine(int count)
 {
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i <= count; i++)
     {
-        cout << " ----------" << setw(6);
+        cout << " -------------" << setw(7);
         cout << "  ";
     }
     cout << endl;
@@ -52,7 +52,7 @@ void printLine()
 
 void printWithBracketNumber(double number)
 {
-    cout << setw(2) << "|" << setw(8) << number << "|" << setw(6) << "";
+    cout << setw(3) << "|" << setw(9) << number << "|" << setw(8) << "";
 }
 
 void printWithBracketNumber(int number)
@@ -67,12 +67,12 @@ void printWithBracketNumber(int number, int space)
 
 void printWithBracketAdress(ManagerListNode *address)
 {
-    cout << setw(2) << "|" << setw(8) << address << "|" << setw(6) << "";
+    cout << setw(3) << "|" << setw(9) << address << "|" << setw(8) << "";
 }
 
 void printWithAdressNoBracket(ManagerListNode *address)
 {
-    cout << setw(2) << "" << address << setw(7) << "";
+    cout << setw(2) << "" << setw(9) << address << setw(10) << "";
 }
 
 void printWithAdressNoBracket(RowListNode *address)
@@ -92,5 +92,5 @@ void printWithBracketAdress(RowListNode *address, int space)
 
 void printSelectMarker(int index)
 {
-    cout << setw(28 + 17 * (index - 1)) << "^^^^^^^^^^" << endl;
+    cout << setw(14 + 21 * (index)) << "^^^^^^^^^^^^^" << endl;
 }

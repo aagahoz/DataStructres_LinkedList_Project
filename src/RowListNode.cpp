@@ -132,21 +132,21 @@ void RowListNode::printList(int index)
         {
             cout << endl;
             // cout << setw(28 + 17 * (index - 1));
-            printWithBracketAdress(temp, 36 + 17 * (index - 2));
+            printWithBracketAdress(temp, 24 + 21 * (index - 1));
             cout << endl;
-            cout << setw(28 + 17 * (index - 1));
-            cout << " ----------" << setw(6);
+            cout << setw(14 + 21 * (index));
+            cout << " -------------" << setw(6);
             cout << endl;
-            cout << setw(28 + 17 * (index - 1));
-            printWithBracketNumber(temp->data, 36 + 17 * (index - 2));
+            cout << setw(28 + 20 * (index - 1));
+            printWithBracketNumber(temp->data, 24 + 21 * (index - 1));
             cout << endl;
-            cout << setw(28 + 17 * (index - 1));
-            cout << " ----------" << setw(6);
+            cout << setw(14 + 21 * (index));
+            cout << " -------------" << setw(6);
             cout << endl;
-            printWithBracketAdress(temp->next, 36 + 17 * (index - 2));
+            printWithBracketAdress(temp->next, 24 + 21 * (index - 1));
             cout << endl;
-            cout << setw(28 + 17 * (index - 1));
-            cout << " ----------" << setw(6);
+            cout << setw(14 + 21 * (index));
+            cout << " -------------" << setw(6);
             cout << endl;
 
             cout << endl;

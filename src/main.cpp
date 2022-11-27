@@ -88,6 +88,7 @@ int main()
                {
                     cout << "k_OnePressed and k_TwoPressed" << endl;
                     cout << "one data deleted randomly from Selected Row List " << endl;
+
                     k_OnePressed = false;
                     k_TwoPressed = false;
                }
@@ -95,6 +96,9 @@ int main()
 
           case 'p':
                cout << "Manage List Node Deleted" << endl;
+               headManager->deleteNodeByManageIndex(rowCounter);
+               cout << "Row Counter : " << rowCounter << endl;
+               // cout << "Manage Octal Counter " << manageOctalCounter << endl;
                break;
           default:
                cout << "Invalid Input" << endl;
@@ -103,7 +107,7 @@ int main()
 
           cout << endl;
           cout << "Manage Octal Number: " << manageOctalCounter << endl;
-          cout << "Row Number: " << rowCounter << endl;
+          cout << "rowCounter:  " << rowCounter << endl;
           cout << endl;
           headManager->printListDetailedInRange(manageOctalCounter * 8, manageOctalCounter * 8 + 7, rowCounter);
      }

@@ -370,6 +370,21 @@ void ManagerListNode::printListDetailedInRange(int first, int last, int rowIndex
 {
     ManagerListNode *temp = head;
     int i = 0;
+    int countList = 0;
+    cout << "first : " << first << endl;
+    cout << "last : " << last << endl;
+    cout << "rowIndex : " << rowIndex << endl
+         << endl;
+
+    bool isLastPage = false;
+    int count = 7;
+    if (last - first < 7)
+    {
+        cout << "last - first < 7" << endl;
+        isLastPage = true;
+        count = last - first;
+    }
+
     if (first < rowListCount && last < rowListCount)
     {
         while (temp != NULL)
@@ -382,9 +397,9 @@ void ManagerListNode::printListDetailedInRange(int first, int last, int rowIndex
             i++;
         }
         cout << endl;
-        
-        printLine();
-        
+
+        printLine(count);
+
         //--------------------------------
 
         temp = head;
@@ -400,8 +415,8 @@ void ManagerListNode::printListDetailedInRange(int first, int last, int rowIndex
         }
         cout << endl;
 
-        printLine();
-        
+        printLine(count);
+
         //--------------------------------
 
         temp = head;
@@ -417,8 +432,8 @@ void ManagerListNode::printListDetailedInRange(int first, int last, int rowIndex
         }
         cout << endl;
 
-        printLine();
-        
+        printLine(count);
+
         //--------------------------------
 
         temp = head;
@@ -434,9 +449,9 @@ void ManagerListNode::printListDetailedInRange(int first, int last, int rowIndex
         }
         cout << endl;
 
-        printLine();
+        printLine(count);
         cout << endl;
-        
+
         printSelectMarker(rowIndex % 8);
 
         printSelectedRowList(rowIndex);
@@ -444,6 +459,11 @@ void ManagerListNode::printListDetailedInRange(int first, int last, int rowIndex
     else if (last > rowListCount)
     {
         int mod = last % rowListCount;
+        cout << "rowListCount: " << rowListCount << endl;
+        cout << "last: " << last << endl;
+        cout << "rowlistcount - mod + 1 " << rowListCount - mod + 1 << endl;
+        cout << "rowlistcount - 1 " << rowListCount - 1 << endl;
+        // system("Pause");
         printListDetailedInRange(rowListCount - mod + 1, rowListCount - 1, rowIndex);
     }
     else
