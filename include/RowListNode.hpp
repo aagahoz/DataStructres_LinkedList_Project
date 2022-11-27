@@ -1,3 +1,12 @@
+/**
+ * @file  RowListNode.hpp
+ * @description Dinamik Liste kullanımı ve consol tasarımı
+ * @course  1.Öğretim C Grubu 
+ * @assignment  1.Ödev
+ * @date   10.11.2022
+ * @author  Abdullah Agah Özdemir - agah.ozdemir@ogr.sakarya.edu.tr
+ */
+
 #ifndef RowListNode_hpp
 #define RowListNode_hpp
 class RowListNode
